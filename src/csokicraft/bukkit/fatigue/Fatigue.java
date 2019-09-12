@@ -21,6 +21,7 @@ public class Fatigue extends JavaPlugin{
 	public static final String PERM_EXEMPT = "csokicraft.fatigue.exempt";
 	public static Logger l;
 	Collection<FatigueEffect> effects;
+	int taskNr=-1;
 	
 	@Override
 	public void onLoad(){
@@ -35,7 +36,9 @@ public class Fatigue extends JavaPlugin{
 		ConfigurationSerialization.registerClass(FatigueEffect.class);
 		FileConfiguration conf=getConfig();
 		effects=(Collection<FatigueEffect>) conf.getList("effects", new LinkedList<FatigueEffect>());
-		getServer().getScheduler().scheduleSyncRepeatingTask(this, taskFatigue, 0, (int)(20*conf.getDouble("frequency")));
+		if(taskNr>0)
+			getServer().getScheduler().cancelTask(taskNr);
+		taskNr=getServer().getScheduler().scheduleSyncRepeatingTask(this, taskFatigue, 0, (int)(20*conf.getDouble("frequency")));
 		l=getLogger();
 	}
 	
