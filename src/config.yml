@@ -9,9 +9,9 @@
 # An effect object has the following keys:
 # - `effect`: an Effect object
 #    * `effect`: Potion ID of the debuff
-#    * `duration`: duration of the debuff (seconds)
+#    * `duration`: duration of the debuff (ticks)
 #    * `amplifier`: Strength of the debuff (0=level I, 1=level II etc.)
-# - `after`: How much sleep deprivation causes this effect
+# - `after`: How much sleep deprivation causes this effect (ticks)
 # A higher duration causes the effect to "linger" after the player has
 # already slept. A lower duration may cause the effect to "flicker"
 # (if the duration is less than `frequency`*20)
