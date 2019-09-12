@@ -1,0 +1,21 @@
+name: Fatigue
+version: 1.0.0
+api-version: 1.14
+description: Adds debuffs if the player hasn't slept in a long time
+author: CsokiCraft
+main: csokicraft.bukkit.fatigue.Fatigue
+commands:
+  fatigue:
+    description: Manage Fatigue debuffs
+    aliases: fat
+    permission: csokicraft.fatigue.config
+    usage: <command> (add|remove) <after> <potionName> <duration> [amplifier]
+permissions:
+  csokicraft.fatigue.*:
+    children:
+      csokicraft.fatigue.exempt: true
+      csokicraft.fatigue.config: true
+  csokicraft.fatigue.exempt:
+    description: Prevents sleep deprivation debuffs
+  csokicraft.fatigue.config:
+    description: Allows config changes via the /fatigue command

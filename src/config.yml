@@ -1,0 +1,28 @@
+# Fatigue: Adds debuffs if the player hasn't slept in a long time
+# @author CsokiCraft
+#
+# `frequency` controls how often the plugin should check players.
+# Lower this if you experience lag. 1.0=every second, 2.0=every
+# two seconds, 0.5=twice each second etc.
+#
+# `effects` is a list of effect objects.
+# An effect object has the following keys:
+# - `effect`: an Effect object
+#    * `effect`: Potion ID of the debuff
+#    * `duration`: duration of the debuff (seconds)
+#    * `amplifier`: Strength of the debuff (0=level I, 1=level II etc.)
+# - `after`: How much sleep deprivation causes this effect
+# A higher duration causes the effect to "linger" after the player has
+# already slept. A lower duration may cause the effect to "flicker"
+# (if the duration is less than `frequency`*20)
+frequency: 1.0
+effects:
+- ==: csokicraft.bukkit.fatigue.FatigueEffect
+  effect:
+    effect: 2
+    duration: 30
+    amplifier: 0
+    ambient: true
+    has-particles: true
+    has-icon: true
+  after: 24000
