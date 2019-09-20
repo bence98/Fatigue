@@ -1,5 +1,5 @@
 name: Fatigue
-version: 1.0.0
+version: 1.0.1
 api-version: 1.14
 description: Adds debuffs if the player hasn't slept in a long time
 author: CsokiCraft
