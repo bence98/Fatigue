@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
-import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -56,16 +55,16 @@ public class Fatigue extends JavaPlugin{
 					getConfig().set("effects", effects);
 					saveConfig();
 					l.info(sender.getName()+" added effect "+args[2]);
-					sender.sendMessage(ChatColor.YELLOW+"Effect added");
+					sender.sendMessage(getConfig().getString("message.added"));
 					return true;
 				case "remove":
 					if(!effects.remove(fe))
-						sender.sendMessage(ChatColor.RED+"Effect not found!");
+						sender.sendMessage(getConfig().getString("message.notfound"));
 					else{
 						getConfig().set("effects", effects);
 						saveConfig();
 						l.info(sender.getName()+" removed effect "+args[2]);
-						sender.sendMessage(ChatColor.YELLOW+"Effect removed");
+						sender.sendMessage(getConfig().getString("message.removed"));
 					}
 					return true;
 				}
@@ -94,7 +93,7 @@ public class Fatigue extends JavaPlugin{
 	}
 	
 	Runnable taskFatigue=()->{
-		var players=getServer().getOnlinePlayers();
+		Collection<? extends Player> players=getServer().getOnlinePlayers();
 		for(Player p:players)
 			synchronized(effects){
 				for(FatigueEffect fe:effects)

@@ -16,6 +16,10 @@
 # already slept. A lower duration may cause the effect to "flicker"
 # (if the duration is less than `frequency`*20)
 frequency: 1.0
+message:
+  added: §eEffect added
+  notfound: §4Effect not found!
+  removed: §eEffect removed
 effects:
 - ==: csokicraft.bukkit.fatigue.FatigueEffect
   effect:
